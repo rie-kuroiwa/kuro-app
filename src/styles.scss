@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@mixin default-border($borderColor: #ccc) {
+  border: 1px solid $borderColor;
+}
+
+button {
+  @include default-border();
+  padding: 5px 10px 6px 10px;
+  background-color: white;
+  color: #ccc;
+  line-height: 1;
+  border-radius: 2px;
+}
