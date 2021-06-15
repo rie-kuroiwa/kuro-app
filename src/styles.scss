@@ -3,6 +3,21 @@
   border: 1px solid $borderColor;
 }
 
+body {
+  color: #736d5e;
+}
+
+h2,
+h3,
+h4 {
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 button {
   @include default-border();
   padding: 5px 10px 6px 10px;
