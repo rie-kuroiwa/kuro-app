@@ -1,0 +1,21 @@
+@import "main";
+
+.parchasing-list {
+  &:hover {
+    background-color: #eee;
+  }
+  &__img-wrap {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &__list-data {
+    flex-grow: 2;
+  }
+  &__item-detail {
+    span {
+      font-size: $font-size-s;
+    }
+  }
+}

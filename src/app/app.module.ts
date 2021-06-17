@@ -14,7 +14,14 @@ import { UnlessDirective } from './directive/unless.directive';
 import { HttpClientService } from './service/http-client.service';
 import { HttpClientComponent } from './components/http-client/http-client.component';
 import { PurchasingListComponent } from './pages/purchasing-list/purchasing-list.component';
-
+import { PurchasingCollectionComponent } from './components/purchasing-collection/purchasing-collection.component';
+import { PurchasingDetailComponent } from './components/purchasing-detail/purchasing-detail.component';
+import { SpecificationCollectionComponent } from './components/specification-collection/specification-collection.component';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductCollectionComponent } from './components/product-collection/product-collection.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PurchasedProductListComponent } from './components/purchased-product-list/purchased-product-list.component';
 
 @NgModule({
   declarations: [
@@ -25,16 +32,24 @@ import { PurchasingListComponent } from './pages/purchasing-list/purchasing-list
     CountdownTimerComponent,
     UnlessDirective,
     HttpClientComponent,
-    PurchasingListComponent
+    PurchasingListComponent,
+    PurchasingCollectionComponent,
+    PurchasingDetailComponent,
+    SpecificationCollectionComponent,
+    MenuBarComponent,
+    ProductListComponent,
+    ProductCollectionComponent,
+    ProductDetailComponent,
+    PurchasedProductListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [HttpClientService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

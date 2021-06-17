@@ -1,0 +1,25 @@
+<ul>
+  <li
+    class="d-flex align-items-center justify-content-between p-3"
+    *ngFor="let specification of specificationList"
+  >
+    <div class="img-wrap d-flex align-items-center justify-content-center me-3">
+      <img src="assets/images/icon/receipt-s.svg" />
+    </div>
+
+    <div class="list-data me-2">
+      <div class="item-name">{{ specification?.productName }}</div>
+      <div class="item-detail">
+        <span class="pe-2">{{
+          specification?.unitPrice | currency: "JPY"
+        }}</span
+        ><span>{{
+          specification?.total ? specification?.total + "個" : ""
+        }}</span>
+      </div>
+    </div>
+    <div class="item-price">
+      {{ specification?.totalPrice | currency: "JPY" }}
+    </div>
+  </li>
+</ul>

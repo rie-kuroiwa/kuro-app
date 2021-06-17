@@ -1,0 +1,120 @@
+/**
+   * elements.headings
+   */
+
+h1 {
+  @include font-size($title-font-size);
+}
+
+h2 {
+  @include font-size($title-font-size);
+}
+
+h3 {
+  @include font-size($title-font-size);
+}
+
+h4 {
+  @include font-size($title-font-size);
+}
+
+h5 {
+  @include font-size($title-font-size);
+}
+
+h6 {
+  @include font-size($title-font-size);
+}
+
+/**
+   * html/body
+   */
+
+html {
+  font-size: ($base-font-size / $base-font-size) * 1em; /* [1] */
+  line-height: $base-line-height / $base-font-size; /* [1] */
+  padding: $base-spacing-unit;
+  padding-top: 10px;
+  padding-bottom: 0;
+  background-color: #fff;
+  color: $color-text;
+}
+
+body {
+  color: $color-text;
+}
+
+/**
+   * elements.images
+   */
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/**
+   * elements.links
+   */
+
+a {
+  text-decoration: none;
+  color: $color-link;
+
+  &:hover,
+  &:focus {
+    color: $color-link-hover;
+  }
+}
+
+/**
+   * elements.lists
+   */
+
+ul {
+  list-style: square outside;
+}
+
+li > {
+  ul,
+  ol {
+    margin-left: 2 * $base-spacing-unit;
+    margin-bottom: 0;
+  }
+}
+
+button {
+  @include default-border();
+  padding: 5px 10px 6px 10px;
+  background-color: white;
+  color: $color-gray-light;
+  line-height: 1;
+  border-radius: 2px;
+}
+
+/**
+   * elements.blockquotes
+   */
+blockquote {
+  quotes: "“" "”";
+
+  p {
+    text-indent: -0.42em;
+
+    &:before {
+      content: open-quote;
+    }
+
+    &:after {
+      content: no-close-quote;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+
+      &:after {
+        content: close-quote;
+      }
+    }
+  }
+}

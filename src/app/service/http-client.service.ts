@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { PurchasingCollectionModel } from '../components/purchasing-collection/purchasing-collection.component';
+import { PurchasingModel } from '../components/purchasing-detail/purchasing-detail.component';
+import { ProductCollectionModel } from '../components/product-collection/product-collection.component';
+import { ProductModel } from '../components/product-detail/product-detail.component';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +20,12 @@ export class HttpClientService {
    * @description
    * 認証トークンを使用するために `httpOptions` としてオブジェクトを用意した。
    */
+
+  private purchasingList = '/purchasing-list';
+  private purchasingDetail = '/purchasing-detail';
+  private productList = '/product-list';
+  private productDetail = '/product-detail';
+
   private httpOptions: any = {
     // ヘッダー情報
     headers: new HttpHeaders({
@@ -84,6 +94,95 @@ export class HttpClientService {
         return this.errorHandler(error);
       })
     );
+  }
+
+  /**
+   * HTTP GET メソッドを実行する
+   * 仕入れ一覧取得
+   *
+   * @returns {ObservableObservable<PurchasingCollectionModel[] | any>}
+   * @menberof HttpClientService
+   */
+  public getPurchasingList(
+    params: object = {}
+  ): Observable<PurchasingCollectionModel[] | any> {
+    return this.http
+      .get<PurchasingCollectionModel[]>(
+        this.host + this.purchasingList,
+        this.httpOptions
+      )
+      .pipe(
+        map((result) => result),
+        catchError((error) => {
+          return this.errorHandler(error);
+        })
+      );
+  }
+
+  /**
+   * HTTP GET メソッドを実行する
+   * 仕入れ詳細取得
+   *
+   * @returns {ObservableObservable<PurchasingModel[] | any>}
+   * @menberof HttpClientService
+   */
+  public getPurchasingDetail(
+    params: object = {}
+  ): Observable<PurchasingModel[] | any> {
+    return this.http
+      .get<PurchasingModel[]>(
+        this.host + this.purchasingDetail,
+        this.httpOptions
+      )
+      .pipe(
+        map((result) => result),
+        catchError((error) => {
+          return this.errorHandler(error);
+        })
+      );
+  }
+
+  /**
+   * HTTP GET メソッドを実行する
+   * 商品一覧取得
+   *
+   * @returns {ObservableObservable<ProductCollectionModel[] | any>}
+   * @menberof HttpClientService
+   */
+  public getProductList(
+    params: object = {}
+  ): Observable<ProductCollectionModel[] | any> {
+    return this.http
+      .get<ProductCollectionModel[]>(
+        this.host + this.productList,
+        this.httpOptions
+      )
+      .pipe(
+        map((result) => result),
+        catchError((error) => {
+          return this.errorHandler(error);
+        })
+      );
+  }
+
+  /**
+   * HTTP GET メソッドを実行する
+   * 商品詳細取得
+   *
+   * @returns {ObservableObservable<ProductModel[] | any>}
+   * @menberof HttpClientService
+   */
+  public getProductDetail(
+    params: object = {}
+  ): Observable<ProductModel[] | any> {
+    return this.http
+      .get<ProductModel[]>(this.host + this.productDetail, this.httpOptions)
+      .pipe(
+        map((result) => result),
+        catchError((error) => {
+          return this.errorHandler(error);
+        })
+      );
   }
 
   // public get(callback:any) {
