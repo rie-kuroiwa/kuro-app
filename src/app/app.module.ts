@@ -22,6 +22,9 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { ProductCollectionComponent } from './components/product-collection/product-collection.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { PurchasedProductListComponent } from './components/purchased-product-list/purchased-product-list.component';
+import { LineGraphComponent } from './components/charts/line-graph/line-graph.component';
+import { ReportComponent } from './pages/report/report.component';
+import { ColumnChartComponent } from './components/charts/column-chart/column-chart.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { PurchasedProductListComponent } from './components/purchased-product-li
     ProductCollectionComponent,
     ProductDetailComponent,
     PurchasedProductListComponent,
+    LineGraphComponent,
+    ReportComponent,
+    ColumnChartComponent,
   ],
   imports: [
     BrowserModule,
