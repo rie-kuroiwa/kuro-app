@@ -13,6 +13,34 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
+export const progressData = [
+  {
+    date: '2021/01',
+    research: 40,
+    plan: 55,
+    implement: 60,
+  },
+  {
+    date: '2021/02',
+    research: 30,
+    plan: 78,
+    implement: 69,
+  },
+  {
+    date: '2021/03',
+    research: 27,
+    plan: 40,
+    implement: 45,
+  },
+  {
+    date: '2021/04',
+    research: 50,
+
+    plan: 33,
+    implement: 75,
+  },
+];
+
 @Component({
   selector: 'app-column-chart',
   templateUrl: './column-chart.component.html',
@@ -44,54 +72,72 @@ export class ColumnChartComponent implements OnInit, AfterViewInit, OnDestroy {
       // グラフの色設定
       chart.colors.step = 2;
 
-      // 上部ラベルの設定
+      // tooltipを表示させる為、カーソルを有効化
+      chart.cursor = new am4charts.XYCursor();
+
+      // 上部ラベル(legend)の設定
       chart.legend = new am4charts.Legend();
       chart.legend.position = 'top';
       chart.legend.paddingBottom = 20;
       chart.legend.labels.template.maxWidth = 95;
 
       let xAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-      xAxis.dataFields.category = 'category';
+      xAxis.dataFields.category = 'date';
+      // x軸のタイトル設定
+      xAxis.title.text = 'サイクル';
       xAxis.renderer.cellStartLocation = 0.1;
       xAxis.renderer.cellEndLocation = 0.9;
       xAxis.renderer.grid.template.location = 0;
+      // xAxis.renderer.line.strokeOpacity = 1;
+      // xAxis.renderer.line.strokeWidth = 2;
+      // xAxis.renderer.line.stroke = am4core.color('#dc3545');
 
       let yAxis = chart.yAxes.push(new am4charts.ValueAxis());
       yAxis.min = 0;
+      yAxis.max = 100;
 
-      chart.data = [
-        {
-          category: 'Place #1',
-          first: 40,
-          second: 55,
-          third: 60,
-        },
-        {
-          category: 'Place #2',
-          first: 30,
-          second: 78,
-          third: 69,
-        },
-        {
-          category: 'Place #3',
-          first: 27,
-          second: 40,
-          third: 45,
-        },
-        {
-          category: 'Place #4',
-          first: 50,
+      /**
+       * Y軸のメモリラベルの編集
+       * yAxis.renderer.labels.template.fill = am4core.color('orange');
+       * yAxis.renderer.labels.template.fontSize = 20;
+       */
 
-          second: 33,
-          third: 22,
-        },
-      ];
+      /**
+       * y軸のメモリの設定 ※defaultは非表示のため、表示させる
+       * yAxis.renderer.ticks.template.disabled = false;
+       * yAxis.renderer.ticks.template.strokeOpacity = 1;
+       * メモリの色指定
+       * yAxis.renderer.ticks.template.stroke = am4core.color('#dc3545');
+       * メモリの太さ
+       * yAxis.renderer.ticks.template.strokeWidth = 2;
+       * メモリの長さ
+       * yAxis.renderer.ticks.template.length = 10;
+       */
+
+      /**
+       * 水平の値軸の編集
+       * yAxis.renderer.grid.template.strokeOpacity = 1;
+       * yAxis.renderer.grid.template.stroke = am4core.color('#dc3545');
+       * yAxis.renderer.grid.template.strokeWidth = 4;
+       */
+
+      // yAxis.renderer.ticks.template.strokeOpacity = 1;
+      // yAxis.renderer.ticks.template.strokeWidth = 2;
+      // yAxis.renderer.ticks.template.length = 10;
+
+      /**
+       * y軸の項目表示を上部に、x軸の項目表示を右側にする
+       * yAxis.renderer.opposite = true;
+       * xAxis.renderer.opposite = true;
+       */
+
+      chart.data = progressData;
       this.eventChart = chart;
       this.eventXaxis = xAxis;
 
-      this.createSeries('first', 'The First', chart);
-      this.createSeries('second', 'The Second', chart);
-      this.createSeries('third', 'The Third', chart);
+      this.createSeries('research', '調査', chart);
+      this.createSeries('plan', '計画', chart);
+      this.createSeries('implement', '実装', chart);
       this.chart = chart;
     });
   }
@@ -110,8 +156,11 @@ export class ColumnChartComponent implements OnInit, AfterViewInit, OnDestroy {
   createSeries(value: string, name: string, chart: am4charts.XYChart) {
     let series = chart.series.push(new am4charts.ColumnSeries());
     series.dataFields.valueY = value;
-    series.dataFields.categoryX = 'category';
+    series.dataFields.categoryX = 'date';
     series.name = name;
+
+    // 棒チャートhover時にツールチップを表示
+    series.tooltipText = '種別:{name}/時期:{categoryX}\nValue:{valueY}';
 
     series.events.on('hidden', this.arrangeColumns);
     series.events.on('shown', this.arrangeColumns);
@@ -127,6 +176,12 @@ export class ColumnChartComponent implements OnInit, AfterViewInit, OnDestroy {
     return series;
   }
 
+  /**
+   * legendをクリックし棒グラフの表示非表示の際の棒グラフの位置をアニメーションさせる
+   *
+   * @private
+   * @memberof ColumnChartComponent
+   */
   private arrangeColumns = () => {
     let series = this.eventChart.series.getIndex(0);
 

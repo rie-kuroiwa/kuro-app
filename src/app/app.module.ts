@@ -25,6 +25,8 @@ import { PurchasedProductListComponent } from './components/purchased-product-li
 import { LineGraphComponent } from './components/charts/line-graph/line-graph.component';
 import { ReportComponent } from './pages/report/report.component';
 import { ColumnChartComponent } from './components/charts/column-chart/column-chart.component';
+import { PieChartComponent } from './components/charts/pie-chart/pie-chart.component';
+import { ColumnDateChartComponent } from './components/charts/column-date-chart/column-date-chart.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { ColumnChartComponent } from './components/charts/column-chart/column-ch
     LineGraphComponent,
     ReportComponent,
     ColumnChartComponent,
+    PieChartComponent,
+    ColumnDateChartComponent,
   ],
   imports: [
     BrowserModule,
