@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import am4themes_material from '@amcharts/amcharts4/themes/material';
 
 export const progressData = [
   {
@@ -95,6 +96,11 @@ export class ColumnChartComponent implements OnInit, AfterViewInit, OnDestroy {
       let yAxis = chart.yAxes.push(new am4charts.ValueAxis());
       yAxis.min = 0;
       yAxis.max = 100;
+
+      /**
+       * y軸のラベルに単位等（下記の例では’%’）を表示する
+       */
+      yAxis.renderer.labels.template.adapter.add('text', (text) => text + '%');
 
       /**
        * Y軸のメモリラベルの編集

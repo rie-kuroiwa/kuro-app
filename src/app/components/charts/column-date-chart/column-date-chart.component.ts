@@ -97,7 +97,19 @@ export class ColumnDateChartComponent
   ngAfterViewInit() {
     // チャートコードをここで設定
     this.browserOnly(() => {
+      // オリジナルテーマを作成
+      function am4themes_redTheme(target: any) {
+        if (target instanceof am4core.ColorSet) {
+          target.list = [
+            am4core.color('#1BA68D'),
+            am4core.color('#E77624'),
+            am4core.color('#64297B'),
+          ];
+        }
+      }
+
       am4core.useTheme(am4themes_animated);
+      am4core.useTheme(am4themes_redTheme);
       let chart = am4core.create('dateChartdiv', am4charts.XYChart);
 
       // 上部ラベル作成
