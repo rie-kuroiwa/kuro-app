@@ -27,6 +27,7 @@ import { ReportComponent } from './pages/report/report.component';
 import { ColumnChartComponent } from './components/charts/column-chart/column-chart.component';
 import { PieChartComponent } from './components/charts/pie-chart/pie-chart.component';
 import { ColumnDateChartComponent } from './components/charts/column-date-chart/column-date-chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ColumnDateChartComponent } from './components/charts/column-date-chart/
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,

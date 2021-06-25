@@ -3,4 +3,6 @@
 <button class="nav-button return-button" type="button" routerLink="/sample">sample</button>
 <button class="nav-button return-button ms-2" type="button" (click)="returnBack()">戻る</button>
 </nav> -->
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

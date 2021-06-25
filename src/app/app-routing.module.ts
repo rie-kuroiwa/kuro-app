@@ -8,8 +8,16 @@ import { ReportComponent } from './pages/report/report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/purchasing-list', pathMatch: 'full' },
-  { path: 'purchasing-list', component: PurchasingListComponent },
-  { path: 'product-list', component: ProductListComponent },
+  {
+    path: 'purchasing-list',
+    component: PurchasingListComponent,
+    data: { animation: 'PurchasingList' },
+  },
+  {
+    path: 'product-list',
+    component: ProductListComponent,
+    data: { animation: 'ProductList' },
+  },
   { path: 'report', component: ReportComponent },
   { path: 'test-parent', component: TestParentComponent },
   { path: 'sample', component: SampleComponent },
