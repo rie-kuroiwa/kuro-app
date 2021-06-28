@@ -28,6 +28,7 @@ import { ColumnChartComponent } from './components/charts/column-chart/column-ch
 import { PieChartComponent } from './components/charts/pie-chart/pie-chart.component';
 import { ColumnDateChartComponent } from './components/charts/column-date-chart/column-date-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalTemplateComponent } from './components/modal-template/modal-template.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ColumnChartComponent,
     PieChartComponent,
     ColumnDateChartComponent,
+    ModalTemplateComponent,
   ],
   imports: [
     BrowserModule,

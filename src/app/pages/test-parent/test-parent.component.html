@@ -1,21 +1,35 @@
 <div class="m-5">
-<h2>親側ページ</h2>
-<button (click)="newMinor()">New minor version</button>
-<button class="ms-2" (click)="newMajor()">New major version</button>
-<app-input-child [major]="major" [minor]="minor"></app-input-child>
-<p>現在の状態は<span [ngClass]="{'a':!condition, 'b':condition, 'unless':true}">{{condition}}</span>
-<button type="button" (click)="condition = !condition" [ngClass]="{'a':condition,'b':!condition}">条件を{{condition ? 'false' : 'true'}}に切り替えます。</button>
-</p>
+  <h2>親側ページ</h2>
+  <button (click)="newMinor()">New minor version</button>
+  <button class="ms-2" (click)="newMajor()">New major version</button>
+  <app-input-child [major]="major" [minor]="minor"></app-input-child>
+  <p>
+    現在の状態は<span
+      [ngClass]="{ a: !condition, b: condition, unless: true }"
+      >{{ condition }}</span
+    >
+    <button
+      type="button"
+      (click)="condition = !condition"
+      [ngClass]="{ a: condition, b: !condition }"
+    >
+      条件を{{ condition ? "false" : "true" }}に切り替えます。
+    </button>
+  </p>
 
-<p *appUnless="condition" class="unless a">(A) 条件が偽なので、この段落は表示されます。</p>
-<p *appUnless ="!condition">(B)条件は真ですが、appUnlessが偽に設定されているため、この段落は表示されます。</p>
+  <p *appUnless="condition" class="unless a">
+    (A) 条件が偽なので、この段落は表示されます。
+  </p>
+  <p *appUnless="!condition" class="nonCondition">
+    (B)条件は真ですが、appUnlessが偽に設定されているため、この段落は表示されます。
+  </p>
 
-<h3>タイマー</h3>
-<button type="button" (click)="timer.start()">Start</button>
-<button type="button" (click)="timer.stop()">Stop</button>
-<div class="seconds">{{timer.seconds}}</div>
-<app-countdown-timer #timer></app-countdown-timer>
+  <h3>タイマー</h3>
+  <button type="button" (click)="timer.start()">Start</button>
+  <button type="button" (click)="timer.stop()">Stop</button>
+  <div class="seconds">{{ timer.seconds }}</div>
+  <app-countdown-timer #timer></app-countdown-timer>
 
-<h3>data取得テスト</h3>
-<app-http-client></app-http-client>
+  <h3>data取得テスト</h3>
+  <app-http-client></app-http-client>
 </div>
