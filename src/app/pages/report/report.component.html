@@ -1,4 +1,7 @@
-<app-menu-bar [currentPage]="'report'"></app-menu-bar>
+<app-menu-bar
+  [currentPage]="'report'"
+  (onClickOpenModal)="openLineChart()"
+></app-menu-bar>
 <div class="row">
   <div class="col-6 b_chart">
     <h3 class="b_chart__chartType">進捗</h3>

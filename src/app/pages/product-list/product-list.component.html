@@ -1,4 +1,7 @@
-<app-menu-bar [currentPage]="'product'"></app-menu-bar>
+<app-menu-bar
+  [currentPage]="'product'"
+  (onClickOpenModal)="onSaveData()"
+></app-menu-bar>
 <div class="row m-3 ms-0">
   <div class="content-left col-5 pe-0 ps-0">
     <h2 class="mb-3 ps-3">商品</h2>

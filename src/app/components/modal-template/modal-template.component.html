@@ -1,5 +1,5 @@
 <div
-  id="overlay"
+  class="overlay"
   (click)="data.click(); closeModal()"
   [@openClose]="isOpen ? 'open' : 'closed'"
 >
@@ -9,11 +9,11 @@
     [@openClose]="isOpen ? 'open' : 'closed'"
     (click)="$event.stopPropagation()"
   >
-    <h2 mb-3>{{ data.title }}</h2>
+    <h2 class="title mb-3 text-start d-inline-block">{{ data.title }}</h2>
     <div class="mb-4" [innerHtml]="data.contents"></div>
-    <p>
-      <button class="me-2" (click)="data.click('OK'); closeModal()">OK</button>
-      <button (click)="data.click('NG'); closeModal()">NG</button>
-    </p>
+    <div class="text-center">
+      <button class="me-2" (click)="closeModal()">キャンセル</button>
+      <button (click)="data.click('OK'); closeModal()">OK</button>
+    </div>
   </div>
 </div>

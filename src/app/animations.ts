@@ -6,6 +6,7 @@ import {
   transition,
   query,
   group,
+  state,
 } from '@angular/animations';
 
 export const slideInAnimation = trigger('routeAnimations', [
@@ -45,4 +46,24 @@ export const slideInAnimation = trigger('routeAnimations', [
     ]),
     query(':enter', animateChild()),
   ]),
+]);
+
+export const modalAnimation = trigger('openClose', [
+  state(
+    'open',
+    style({
+      opacity: 1,
+    })
+  ),
+  state(
+    'closed',
+    style({
+      display: 'none',
+      opacity: 0,
+    })
+  ),
+  transition('open => closed', [animate('0.2s')]),
+  transition('closed => open', [animate('0.2s')]),
+  transition('* => void', [animate('0.2s')]),
+  transition('void => *', [animate('0.2s')]),
 ]);

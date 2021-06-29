@@ -30,7 +30,7 @@ export class ModalService {
    * モーダルウィンドウを表示するコンポーネントから呼び出す。
    * @param viewContainerRef 呼び出し元で生成し、渡す必要がある。
    * @param param 生成するモーダルウィンドウに表示するデータ
-   * @param modalComponent デフォルト以外は呼び出し元で渡す(任意)。
+   * @param modalComponent デフォルト以外は呼び出し元で表示させたいcomponentを渡す(任意)。
    */
 
   public openModal(
@@ -53,15 +53,28 @@ export class ModalService {
     // モーダルウィンドウを作成し、呼び出し元画面に追加
 
     let targetComponent = modalComponent || ModalTemplateComponent;
-    console.log(targetComponent);
     let componentRef = this.createComponent(targetComponent, viewContainerRef);
 
     // 作成したモーダルウィンドウにデータを渡す。
-    componentRef.instance.data = param;
-    param.click = this.retPublish();
+    if (param) {
+      componentRef.instance.data = param;
+      param.click = this.retPublish();
+    }
 
     // 呼び出し元にObservableを返す
     return this.subject.asObservable();
+  }
+
+  /**
+   * モーダルウィンドウを破棄するメソッド。
+   * 必要に応じ、表示するモーダルウィンドウコンポーネントから呼び出す。
+   * ※通常はopen時に破棄するので、不要
+   * @memberof ModalService
+   */
+  public modalDestroy() {
+    if (this.viewContainerRef) {
+      this.viewContainerRef.clear();
+    }
   }
 
   /**

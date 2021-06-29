@@ -1,43 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { modalAnimation } from '../../animations';
 
 @Component({
   selector: 'app-modal-template',
   templateUrl: './modal-template.component.html',
   styleUrls: ['./modal-template.component.scss'],
-  animations: [
-    trigger('openClose', [
-      state(
-        'open',
-        style({
-          opacity: 1,
-        })
-      ),
-      state(
-        'closed',
-        style({
-          display: 'none',
-          opacity: 0,
-        })
-      ),
-      transition('open => closed', [animate('0.2s')]),
-      transition('closed => open', [animate('0.2s')]),
-      transition('* => void', [animate('0.2s')]),
-      transition('void => *', [animate('0.2s')]),
-    ]),
-  ],
+  animations: [modalAnimation],
 })
 export class ModalTemplateComponent implements OnInit {
   @Input() data: any;
   isOpen: boolean;
-  constructor() {
+  constructor(private renderer: Renderer2) {
     this.isOpen = true;
+
+    // モーダル表示時に全体のスクロールを無効にする
+    this.renderer.addClass(document.body, 'display-modal');
   }
 
   /**
@@ -48,6 +25,7 @@ export class ModalTemplateComponent implements OnInit {
 
   closeModal() {
     this.isOpen = false;
+    this.renderer.removeClass(document.body, 'display-modal');
   }
 
   ngOnInit(): void {}

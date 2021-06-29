@@ -6,25 +6,36 @@ import {
   PLATFORM_ID,
   AfterViewInit,
   OnDestroy,
+  Renderer2,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { modalAnimation } from '../../../animations';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import { ModalService } from '../../../service/modal.service';
 
 @Component({
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
   styleUrls: ['./line-graph.component.scss'],
+  animations: [modalAnimation],
 })
 export class LineGraphComponent implements OnInit, AfterViewInit, OnDestroy {
   private chart!: am4charts.XYChart;
+  isOpen: boolean;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private zone: NgZone
-  ) {}
+    private renderer: Renderer2,
+    private zone: NgZone,
+    private modalService: ModalService
+  ) {
+    this.isOpen = true;
+    // モーダル表示時に全体のスクロールを無効にする
+    this.renderer.addClass(document.body, 'display-modal');
+  }
 
   // ブラウザのみで機能を実行
   browserOnly(f: () => void) {
@@ -89,5 +100,15 @@ export class LineGraphComponent implements OnInit, AfterViewInit, OnDestroy {
         this.chart.dispose();
       }
     });
+  }
+
+  closeModal() {
+    this.isOpen = false;
+
+    // スクロール防止用スタイルクラスをbodyから削除
+    this.renderer.removeClass(document.body, 'display-modal');
+
+    // 通常はここではウィンドウ破棄の必要はないが、chartの仕様上、ここで破棄実行
+    this.modalService.modalDestroy();
   }
 }

@@ -1,14 +1,7 @@
-@import "main";
-
-.default-modal {
-  max-width: 80%;
-  min-width: 400px;
-  background: #ffffff;
-  box-shadow: 0px 0px 2px 1px black;
-  overflow: auto;
-}
-
-#overlay {
+/**
+   * overlay for modal
+   */
+.overlay {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -23,6 +16,6 @@
   left: 0;
 }
 
-.title {
-  border-bottom: 2px solid $color-brand;
+.display-modal {
+  overflow: hidden;
 }

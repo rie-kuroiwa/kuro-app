@@ -29,6 +29,8 @@
     </li>
   </ul>
   <div class="main-nav__btn-area">
-    <button type="button" (click)="openModal()">保存</button>
+    <button type="button" (click)="onClickOpenModal.emit()">
+      {{ currentPage === "report" ? "line Chart" : "保存" }}
+    </button>
   </div>
 </nav>
