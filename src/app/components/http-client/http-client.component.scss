@@ -1,0 +1,15 @@
+.table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  caption {
+    caption-side: top;
+  }
+  th,
+  td {
+    border: 1px solid #ccc;
+  }
+}
+
+input[id^="form"] {
+  border: 1px solid #ccc;
+}

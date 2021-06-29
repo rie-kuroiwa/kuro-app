@@ -1,0 +1,35 @@
+<ul>
+  <li
+    *ngFor="let purchasing of purchasingList"
+    class="
+      purchasing-list
+      d-flex
+      align-items-center
+      justify-content-between
+      p-3
+    "
+    (click)="onClick(purchasing.purchasingId)"
+  >
+    <div
+      class="
+        purchasing-list__img-wrap
+        d-flex
+        align-items-center
+        justify-content-center
+        me-3
+      "
+    >
+      <img
+        class="purchasing-list__purchasing-icon"
+        src="assets/images/icon/purchasing.svg"
+      />
+    </div>
+    <div class="purchasing-list__list-data me-2">
+      <div class="purchasing-date">{{ purchasing?.purchasingDate }}</div>
+      <div class="purchasing-id">{{ purchasing?.purchasingId }}</div>
+    </div>
+    <div class="purchasing-price">
+      {{ purchasing?.purchasingTotalPrice | currency: "JPY" }}
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,21 @@
+@import "main";
+
+.main-nav {
+  @include center-center(space-between);
+  @include default-border-bottom();
+  &__nav-list {
+    margin-bottom: -2px;
+  }
+  &__nav-link {
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px;
+    text-align: center;
+    &:hover {
+      background-color: $color-gray-hover;
+    }
+    &.active {
+      border-bottom: 2px solid darken($color-brand, 15%);
+    }
+  }
+}

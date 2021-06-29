@@ -1,0 +1,21 @@
+<app-menu-bar
+  [currentPage]="'purchasing'"
+  (onClickOpenModal)="onSaveData()"
+></app-menu-bar>
+<div class="row m-3 ms-0">
+  <div class="content-left col-5 pe-0 ps-0">
+    <h2 class="ps-3">仕入れ</h2>
+    <!-- 仕入れコレクションビュー -->
+    <app-purchasing-collection
+      [purchasingList]="purchasingList"
+    ></app-purchasing-collection>
+    <!-- //仕入れコレクションビュー -->
+  </div>
+  <div class="col-7 content-details pe-0 ps-0">
+    <!-- 仕入れ詳細 -->
+    <app-purchasing-detail
+      [purchasingDetail]="purchasingDetail[0]"
+    ></app-purchasing-detail>
+    <!-- //仕入れ詳細 -->
+  </div>
+</div>

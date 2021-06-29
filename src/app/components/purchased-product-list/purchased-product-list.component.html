@@ -1,0 +1,41 @@
+<ul>
+  <li
+    class="
+      parchasing-list
+      d-flex
+      align-items-center
+      justify-content-between
+      p-3
+    "
+    *ngFor="let parchasing of purchasedProductList"
+  >
+    <div
+      class="
+        parchasing-list__img-wrap
+        d-flex
+        align-items-center
+        justify-content-center
+        me-3
+      "
+    >
+      <img src="assets/images/icon/receipt-s.svg" />
+    </div>
+
+    <div class="parchasing-list__list-data me-2">
+      <div class="parchasing-list__item-name">
+        {{ parchasing?.purchasingDate }}
+      </div>
+      <div class="parchasing-list__item-detail">
+        <span class="pe-2">{{ parchasing?.unitPrice | currency: "JPY" }}</span
+        ><span>{{
+          parchasing?.purchasingQuantity
+            ? parchasing?.purchasingQuantity + "個"
+            : ""
+        }}</span>
+      </div>
+    </div>
+    <div class="parchasing-list__item-price">
+      {{ parchasing?.totalPrice | currency: "JPY" }}
+    </div>
+  </li>
+</ul>

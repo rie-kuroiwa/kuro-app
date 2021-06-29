@@ -1,0 +1,52 @@
+<table class="table">
+  <caption>
+    取得したメッセージリスト
+  </caption>
+  <tr>
+    <th id="th-id">ID</th>
+    <th id="th-message">メッセージ</th>
+  </tr>
+  <tr *ngFor="let messageInfo of messageInfoList; index as i">
+    <td>{{ messageInfo.id }}</td>
+    <td>{{ messageInfo.message }}</td>
+  </tr>
+</table>
+
+<form #formcheck="ngForm" class="formCheck">
+  <input
+    type="text"
+    id="form-id"
+    class="input-text"
+    name="message-id"
+    [(ngModel)]="messageId"
+  />
+  <input
+    type="text"
+    id="form-message"
+    class="input-text"
+    name="message"
+    [(ngModel)]="message"
+  />
+</form>
+
+<div class="mt-2">
+  <input
+    type="button"
+    id="register"
+    value="登録"
+    (click)="onClickRegister($event)"
+  />
+  <input
+    type="button"
+    id="update"
+    class="mx-2"
+    value="更新"
+    (click)="onClickUpdate($event)"
+  />
+  <input
+    type="button"
+    id="delete"
+    value="削除"
+    (click)="onClickDelete($event)"
+  />
+</div>

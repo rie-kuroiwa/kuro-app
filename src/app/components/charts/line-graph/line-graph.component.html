@@ -1,0 +1,12 @@
+<div
+  class="overlay"
+  (click)="closeModal()"
+  [@openClose]="isOpen ? 'open' : 'closed'"
+>
+  <div
+    id="chartdiv"
+    class="chart-flame"
+    style="width: 80%; height: 500px"
+    (click)="$event.stopPropagation()"
+  ></div>
+</div>

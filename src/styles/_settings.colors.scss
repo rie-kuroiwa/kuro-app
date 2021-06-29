@@ -1,0 +1,30 @@
+// Color palette
+$color-brand: #79879c;
+$color-brand-highlight: lighten($color-brand, 15%);
+$color-brand-shadow: darken($color-brand, 15%);
+
+$color-gray: #666;
+$color-gray-light: #ccc;
+$color-gray-middle: #736d5e;
+$color-gray-dark: #333;
+$color-gray-hover: #eee;
+
+$color-highlight: rgba(255, 255, 255, 0.05);
+$color-shadow: rgba(0, 0, 0, 0.05);
+
+// Icon
+$color-icon-bg: #808080;
+
+// UI
+$color-ui: $color-gray-light;
+
+// Text
+$color-text: $color-gray-middle;
+
+// Links
+$color-link: $color-brand;
+$color-link-hover: $color-brand-shadow;
+
+// Buttons
+$color-btn: $color-brand;
+$color-btn-hover: $color-brand-shadow;

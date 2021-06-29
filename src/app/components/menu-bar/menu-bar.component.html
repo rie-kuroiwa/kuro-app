@@ -1,0 +1,36 @@
+<nav class="row col-12" class="main-nav">
+  <ul class="d-flex">
+    <li class="main-nav__nav-list">
+      <a
+        class="main-nav__nav-link"
+        [class.active]="currentPage === 'purchasing'"
+        routerLink="/"
+        >仕入れ</a
+      >
+    </li>
+    <li class="main-nav__nav-list">
+      <a
+        class="main-nav__nav-link"
+        [class.active]="currentPage === 'product'"
+        routerLink="/product-list"
+        >商品</a
+      >
+    </li>
+    <li class="main-nav__nav-list">
+      <a
+        class="main-nav__nav-link"
+        [class.active]="currentPage === 'report'"
+        routerLink="/report"
+        >レポート</a
+      >
+    </li>
+    <li>
+      <a class="main-nav__navlink"> </a>
+    </li>
+  </ul>
+  <div class="main-nav__btn-area">
+    <button type="button" (click)="onClickOpenModal.emit()">
+      {{ currentPage === "report" ? "line Chart" : "保存" }}
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,26 @@
+<div>
+  <div
+    class="item-img-wrap d-flex justify-content-center bg-secondary m-auto mb-2"
+  >
+    <img class="w-75 p-3" src="assets/images/icon/item-m.svg" />
+  </div>
+  <div class="text-center mb-1">{{ purchasingDetail?.purchasingId }}</div>
+  <h4 class="text-center fs-2 mb-2">
+    {{ purchasingDetail?.totalPrice | currency: "JPY" }}
+  </h4>
+  <div class="text-center mb-2">
+    <span>{{ purchasingDetail?.purchasingDate }}</span
+    >・<span>{{
+      purchasingDetail?.purchasingTotal
+        ? purchasingDetail?.purchasingTotal + "商品"
+        : ""
+    }}</span>
+  </div>
+</div>
+<h3 class="ps-3">明細</h3>
+<!-- 明細リスト -->
+<app-specification-collection
+  *ngIf="purchasingDetail?.specifidation"
+  [specificationList]="purchasingDetail.specifidation"
+></app-specification-collection>
+<!-- // 明細リスト -->

@@ -1,0 +1,20 @@
+@import "main";
+
+.product-list {
+  &:hover {
+    background-color: $color-gray-hover;
+  }
+  &__img-wrap {
+    width: 44px;
+    height: 44px;
+    background: $color-icon-bg;
+    border-radius: 50%;
+  }
+  &__product-icon {
+    width: 30px;
+    height: 30px;
+  }
+  &__list-data {
+    flex-grow: 2;
+  }
+}

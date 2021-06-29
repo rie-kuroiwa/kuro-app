@@ -1,0 +1,21 @@
+<app-menu-bar
+  [currentPage]="'product'"
+  (onClickOpenModal)="onSaveData()"
+></app-menu-bar>
+<div class="row m-3 ms-0">
+  <div class="content-left col-5 pe-0 ps-0">
+    <h2 class="mb-3 ps-3">商品</h2>
+    <!-- 商品コレクションビュー -->
+    <ul>
+      <app-product-collection
+        [productList]="productList"
+      ></app-product-collection>
+    </ul>
+    <!-- //商品コレクションビュー -->
+  </div>
+  <div class="col-7 content-details pe-0 ps-0">
+    <!-- 商品詳細 -->
+    <app-product-detail [productDetail]="productDetail[0]"></app-product-detail>
+    <!-- //商品詳細 -->
+  </div>
+</div>

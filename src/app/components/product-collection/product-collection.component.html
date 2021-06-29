@@ -1,0 +1,26 @@
+<ul>
+  <li
+    *ngFor="let product of productList"
+    class="product-list d-flex align-items-center justify-content-between p-3"
+    (click)="onClick(product.productId)"
+  >
+    <div
+      class="
+        product-list__img-wrap
+        d-flex
+        align-items-center
+        justify-content-center
+        me-3
+      "
+    >
+      <img
+        class="product-list__product-icon"
+        src="assets/images/icon/item-m.svg"
+      />
+    </div>
+    <div class="product-list__list-data me-2">
+      <div class="product-list__product-date">{{ product?.productName }}</div>
+      <div class="product-list__product-id">{{ product?.productId }}</div>
+    </div>
+  </li>
+</ul>

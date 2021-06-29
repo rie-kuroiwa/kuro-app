@@ -1,0 +1,19 @@
+<div
+  class="overlay"
+  (click)="data.click(); closeModal()"
+  [@openClose]="isOpen ? 'open' : 'closed'"
+>
+  <div
+    class="p-5"
+    [class]="data.class"
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    (click)="$event.stopPropagation()"
+  >
+    <h2 class="title mb-3 text-start d-inline-block">{{ data.title }}</h2>
+    <div class="mb-4" [innerHtml]="data.contents"></div>
+    <div class="text-center">
+      <button class="me-2" (click)="closeModal()">キャンセル</button>
+      <button (click)="data.click('OK'); closeModal()">OK</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+  <div
+    class="item-img-wrap d-flex justify-content-center bg-secondary m-auto mb-2"
+  >
+    <img class="w-75 p-3" src="assets/images/icon/item-m.svg" />
+  </div>
+  <div class="text-center mb-1">{{ productDetail?.productId }}</div>
+  <h4 class="text-center fs-2 mb-2">
+    {{ productDetail?.productName }}
+  </h4>
+</div>
+<h3 class="ps-3">仕入れ</h3>
+<!-- 仕入れリスト -->
+<app-purchased-product-list
+  *ngIf="productDetail?.purchasedProducts"
+  [purchasedProductList]="productDetail.purchasedProducts"
+></app-purchased-product-list>
+<!-- // 仕入れリスト -->
