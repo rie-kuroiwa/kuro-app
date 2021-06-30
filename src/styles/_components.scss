@@ -38,6 +38,17 @@
     border-color: currentColor;
     color: $color-theme-default;
   }
+  &__white {
+    background-color: #fff;
+    color: $color-theme-default;
+    border-color: $color-theme-default;
+    &:focus,
+    &:hover {
+      background-color: $color-theme-default;
+      border-color: transparent;
+      color: #fff;
+    }
+  }
 }
 
 .el_btn__radius {

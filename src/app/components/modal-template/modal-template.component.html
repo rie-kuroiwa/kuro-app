@@ -11,9 +11,19 @@
   >
     <h2 class="title mb-3 text-start d-inline-block">{{ data.title }}</h2>
     <div class="mb-4" [innerHtml]="data.contents"></div>
-    <div class="text-center">
-      <button class="me-2" (click)="closeModal()">キャンセル</button>
-      <button (click)="data.click('OK'); closeModal()">OK</button>
+    <div class="text-center d-flex justify-content-between">
+      <button
+        class="me-4 el_btn el_btn__radius el_btn__white"
+        (click)="closeModal()"
+      >
+        キャンセル
+      </button>
+      <button
+        class="el_btn el_btn__radius"
+        (click)="data.click('OK'); closeModal()"
+      >
+        OK
+      </button>
     </div>
   </div>
 </div>
