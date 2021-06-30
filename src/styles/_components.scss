@@ -19,3 +19,27 @@
 .display-modal {
   overflow: hidden;
 }
+
+.el_btn {
+  display: inline-block;
+  width: 120px;
+  max-width: 100%;
+  padding: 10px 10px;
+  background-color: $color-theme-default;
+  color: #fff;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.25s;
+  &:focus,
+  &:hover {
+    background-color: #fff;
+    border-color: currentColor;
+    color: $color-theme-default;
+  }
+}
+
+.el_btn__radius {
+  border-radius: 4px;
+}

@@ -29,7 +29,11 @@
     </li>
   </ul>
   <div class="main-nav__btn-area">
-    <button type="button" (click)="onClickOpenModal.emit()">
+    <button
+      class="el_btn el_btn__radius"
+      type="button"
+      (click)="onClickOpenModal.emit()"
+    >
       {{ currentPage === "report" ? "line Chart" : "保存" }}
     </button>
   </div>

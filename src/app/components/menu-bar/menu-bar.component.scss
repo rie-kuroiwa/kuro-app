@@ -15,7 +15,7 @@
       background-color: $color-gray-hover;
     }
     &.active {
-      border-bottom: 2px solid darken($color-brand, 15%);
+      border-bottom: 2px solid darken($color-theme-default, 15%);
     }
   }
 }
